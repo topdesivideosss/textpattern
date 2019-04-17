@@ -63,9 +63,9 @@ if (!defined('txpath')) {
 
 define("txpinterface", "admin");
 
-$thisversion = '4.7.3';
+$thisversion = '4.7.4-dev';
 // $txp_using_svn deprecated in 4.7.0.
-$txp_using_svn = $txp_is_dev = false; // Set false for releases.
+$txp_using_svn = $txp_is_dev = true; // Set false for releases.
 
 ob_start(null, 2048);
 
@@ -117,6 +117,7 @@ if ($connected && numRows(safe_query("SHOW TABLES LIKE '".PFX."textpattern'"))) 
         updateSitePath(dirname(dirname(__FILE__)));
     }
 
+    define('TXP_PATTERN', get_pref('enable_short_tags', false) ? 'txp|[a-z]+:' : 'txp:?');
     define("LANG", $language);
     define('txp_version', $thisversion);
 
