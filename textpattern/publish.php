@@ -68,10 +68,6 @@ plug_privs();
 // Add prefs to globals.
 extract($prefs);
 
-if (!defined('TXP_PATTERN')) {
-    define('TXP_PATTERN', get_pref('enable_short_tags', false) ? 'txp|[a-z]+:' : 'txp:?');
-}
-
 $txp_current_tag = '';
 $txp_parsed = $txp_else = $txp_yield = $yield = array();
 $txp_atts = null;
@@ -179,6 +175,10 @@ if (!defined('LANG')) {
      */
 
     define('LANG', $language);
+}
+
+if (!defined('TXP_PATTERN')) {
+    define('TXP_PATTERN', get_pref('enable_short_tags', false) ? 'txp|[a-z]+:' : 'txp:?');
 }
 
 if (!empty($locale)) {
